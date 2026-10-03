@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>TempMail — Temporary Email</title>
+<meta name="description" content="Create unlimited temporary email addresses on your own domain and read incoming mail instantly.">
+<meta name="theme-color" content="#4f46e5">
+<link rel="manifest" href="/manifest.webmanifest">
+<link rel="icon" href="/icons/icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="/icons/icon-192.png">
+<link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <img src="/icons/icon-192.png" alt="" class="brand-icon">
+    <span class="brand-name">TempMail</span>
+  </div>
+  <span class="brand-sub">temporary email, your domain</span>
+</header>
+
+<main class="container">
+
+  <!-- Current address card -->
+  <section class="card address-card">
+    <p class="card-label">Your email address</p>
+    <div class="address-row">
+      <span id="currentAddress" class="current-address">loading…</span>
+      <button id="copyBtn" class="btn btn-primary" type="button">Copy</button>
+    </div>
+    <div class="address-actions">
+      <button id="randomBtn" class="btn btn-ghost" type="button">🎲 Random address</button>
+      <button id="refreshBtn" class="btn btn-ghost" type="button">↻ Refresh inbox</button>
+    </div>
+    <form id="customForm" class="custom-form">
+      <div class="custom-input-wrap">
+        <input id="customInput" type="text" placeholder="your-name" autocomplete="off"
+               autocapitalize="none" spellcheck="false" maxlength="30">
+        <span id="domainSuffix" class="domain-suffix">@…</span>
+      </div>
+      <button class="btn btn-primary" type="submit">Create</button>
+    </form>
+    <p id="customError" class="error-text" hidden></p>
+  </section>
+
+  <!-- Saved addresses -->
+  <section id="savedSection" class="saved-section" hidden>
+    <div class="saved-head">
+      <h2>Saved addresses</h2>
+      <button id="removeAddressBtn" class="btn btn-danger-ghost" type="button">Remove current</button>
+    </div>
+    <div id="savedList" class="chip-list"></div>
+  </section>
+
+  <!-- Inbox view -->
+  <section id="inboxView">
+    <div class="inbox-head">
+      <h2>Inbox</h2>
+      <span id="inboxStatus" class="inbox-status"></span>
+    </div>
+    <p id="emptyState" class="empty-state" hidden>
+      No mail yet for this address.<br>
+      Send an email to it from any mailbox — it will appear here within seconds.
+    </p>
+    <ul id="messageList" class="message-list"></ul>
+  </section>
+
+  <!-- Message view -->
+  <section id="messageView" hidden>
+    <div class="message-toolbar">
+      <button id="backBtn" class="btn btn-ghost" type="button">← Back</button>
+      <button id="deleteBtn" class="btn btn-danger" type="button">Delete</button>
+    </div>
+    <article class="card message-card">
+      <h2 id="msgSubject" class="msg-subject"></h2>
+      <p class="msg-meta"><span id="msgFrom"></span><br><span id="msgDate" class="muted"></span></p>
+      <div id="msgBodyWrap" class="msg-body-wrap">
+        <iframe id="msgFrame" class="msg-frame" sandbox="" title="Email content"></iframe>
+        <pre id="msgText" class="msg-text" hidden></pre>
+      </div>
+    </article>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <p>Mail is kept for a limited time and then deleted automatically. Receive-only.</p>
+</footer>
+
+<div id="toast" class="toast" hidden></div>
+
+<script src="/js/app.js"></script>
+</body>
+</html>

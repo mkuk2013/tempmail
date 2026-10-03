@@ -1,0 +1,24 @@
+name = "tempmail"
+main = "src/worker.js"
+compatibility_date = "2025-09-01"
+
+# Static PWA frontend in ./public, served through env.ASSETS.
+[assets]
+directory = "./public"
+
+# D1 database: create it with `npx wrangler d1 create tempmail`
+# then paste the printed database_id below.
+[[d1_databases]]
+binding = "DB"
+database_name = "tempmail"
+database_id = "PASTE_YOUR_DATABASE_ID_HERE"
+
+[vars]
+# Your domain that is on Cloudflare and has Email Routing enabled.
+MAIL_DOMAIN = "weblitex.com"
+# Messages older than this many days are deleted automatically.
+RETENTION_DAYS = "7"
+
+# Daily cleanup at 03:00 UTC.
+[triggers]
+crons = ["0 3 * * *"]
