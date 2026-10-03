@@ -11,7 +11,7 @@ directory = "./public"
 [[d1_databases]]
 binding = "DB"
 database_name = "tempmail"
-database_id = "PASTE_YOUR_DATABASE_ID_HERE"
+database_id = "826018f0-4601-420a-80a7-c769119886bb"
 
 [vars]
 # Your domain that is on Cloudflare and has Email Routing enabled.
