@@ -14,26 +14,47 @@
 <body>
 
 <header class="topbar">
-  <div class="brand">
-    <img src="/icons/icon-192.png" alt="" class="brand-icon">
-    <span class="brand-name">TempMail</span>
+  <div class="topbar-inner">
+    <div class="brand">
+      <span class="brand-tile"><img src="/icons/icon-192.png" alt="" class="brand-icon"></span>
+      <span class="brand-text">
+        <span class="brand-name">TempMail</span>
+        <span class="brand-sub">Temporary email · @weblitex.com</span>
+      </span>
+    </div>
+    <button id="installBtn" class="install-btn" type="button">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+      Install app
+    </button>
   </div>
-  <span class="brand-sub">temporary email, your domain</span>
 </header>
 
 <main class="container">
 
   <!-- Current address card -->
   <section class="card address-card">
-    <p class="card-label">Your email address</p>
-    <div class="address-row">
+    <p class="card-label">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      Your temporary address
+    </p>
+    <div class="address-box">
       <span id="currentAddress" class="current-address">loading…</span>
-      <button id="copyBtn" class="btn btn-primary" type="button">Copy</button>
+      <button id="copyBtn" class="btn btn-primary" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
+        Copy
+      </button>
     </div>
     <div class="address-actions">
-      <button id="randomBtn" class="btn btn-ghost" type="button">🎲 Random address</button>
-      <button id="refreshBtn" class="btn btn-ghost" type="button">↻ Refresh inbox</button>
+      <button id="randomBtn" class="btn btn-soft" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 3h5v5"/><path d="M4 20 21 3"/><path d="M21 16v5h-5"/><path d="m15 15 6 6"/><path d="M4 4l5 5"/></svg>
+        Random address
+      </button>
+      <button id="refreshBtn" class="btn btn-ghost" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><polyline points="21 3 21 9 15 9"/></svg>
+        Refresh inbox
+      </button>
     </div>
+    <div class="divider"><span>or create your own</span></div>
     <form id="customForm" class="custom-form">
       <div class="custom-input-wrap">
         <input id="customInput" type="text" placeholder="your-name" autocomplete="off"
@@ -43,6 +64,11 @@
       <button class="btn btn-primary" type="submit">Create</button>
     </form>
     <p id="customError" class="error-text" hidden></p>
+    <ul class="feature-row">
+      <li>Unlimited addresses</li>
+      <li>No sign-up</li>
+      <li>Auto-delete in 7 days</li>
+    </ul>
   </section>
 
   <!-- Saved addresses -->
@@ -57,11 +83,14 @@
   <!-- Inbox view -->
   <section id="inboxView">
     <div class="inbox-head">
-      <h2>Inbox</h2>
+      <h2><span class="live-dot" aria-hidden="true"></span>Inbox</h2>
       <span id="inboxStatus" class="inbox-status"></span>
     </div>
     <p id="emptyState" class="empty-state" hidden>
-      No mail yet for this address.<br>
+      <span class="empty-icon">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+      </span>
+      <strong>No mail yet for this address</strong>
       Send an email to it from any mailbox — it will appear here within seconds.
     </p>
     <ul id="messageList" class="message-list"></ul>
@@ -70,8 +99,14 @@
   <!-- Message view -->
   <section id="messageView" hidden>
     <div class="message-toolbar">
-      <button id="backBtn" class="btn btn-ghost" type="button">← Back</button>
-      <button id="deleteBtn" class="btn btn-danger" type="button">Delete</button>
+      <button id="backBtn" class="btn btn-ghost" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+        Back
+      </button>
+      <button id="deleteBtn" class="btn btn-danger" type="button">
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6"/><path d="M8 6V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
+        Delete
+      </button>
     </div>
     <article class="card message-card">
       <h2 id="msgSubject" class="msg-subject"></h2>
@@ -86,11 +121,21 @@
 </main>
 
 <footer class="footer">
-  <p>Mail is kept for a limited time and then deleted automatically. Receive-only.</p>
+  <p><strong>TempMail</strong> · a Weblitex service<br>Mail is kept for 7 days and then deleted automatically. Receive-only.</p>
 </footer>
+
+<div id="installModal" class="modal" hidden>
+  <div class="modal-card">
+    <span class="modal-icon"><img src="/icons/icon-192.png" alt=""></span>
+    <h3>Install TempMail</h3>
+    <p>Open Chrome's menu <strong>(⋮)</strong> and tap <strong>“Install app”</strong> or <strong>“Add to Home screen”</strong> — TempMail will appear on your home screen like a normal app.</p>
+    <button id="installModalClose" class="btn btn-primary btn-block" type="button">Got it</button>
+  </div>
+</div>
 
 <div id="toast" class="toast" hidden></div>
 
 <script src="/js/app.js"></script>
+<script src="/js/install.js"></script>
 </body>
 </html>

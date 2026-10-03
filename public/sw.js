@@ -1,10 +1,11 @@
 /* TempMail service worker — cache-first app shell, network-only API. */
-const CACHE = 'tempmail-v1';
+const CACHE = 'tempmail-v2';
 const SHELL = [
   '/',
   '/index.html',
   '/css/style.css',
   '/js/app.js',
+  '/js/install.js',
   '/manifest.webmanifest',
   '/icons/icon-192.png',
   '/icons/icon-512.png',
